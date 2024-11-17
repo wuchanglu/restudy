@@ -1,13 +1,5 @@
+<template><p>qqq</p></template>
 <script setup lang="ts">
-import { reactive,
-  //  defineAsyncComponent
-   } from "vue";
-// const AsyncComponent = defineAsyncComponent(()=> import('./components/AsyncComponent.vue'))
-let data = reactive({ num: 1 });
-const onButtonClick = () => {
-  console.log(data.num);
-  data.num++;
-};
 </script>
 <script lang="ts">
 import type { ReactiveEffect, TrackOpTypes, TriggerOpTypes } from "vue";
@@ -31,7 +23,7 @@ export default {
     return {};
   },
   /**
-   * 组件init之前调用，此时还无法读取到组件data等，但是setup已经执行完了
+   * 组件init之前调用，此时还无法读取到组件data等
    */
   beforeCreate() {
     console.log("beforeCreat");
@@ -55,8 +47,44 @@ export default {
     console.log("mounted");
   },
   /**
+   * 响应式状态更改，dom更新前调用
+   */
+  beforeUpdate() {},
+  /**
+   * 响应式状态更改，dom更新后调用
+   */
+  updated() {},
+  /**
+   * 组件被卸载之前调用
+   */
+  beforeUnmount() {},
+  /**
+   * 组件被卸载之后调用
+   */
+  unmounted() {},
+  /**
+   * 捕获了后代组件传递的错误时调用，来源如下
+   * 
+        组件渲染
+        事件处理器
+        生命周期钩子
+        setup() 函数
+        侦听器
+        自定义指令钩子
+        过渡钩子
+   */
+  errorCaptured() {},
+  /**
+   * keepalive组件插入到dom时调用
+   */
+  activated() {},
+  /**
+   * keepalive组件从dom中移除的时候调用
+   */
+  deactivated() {},
+
+  /**
    * 在一个响应式依赖被组件的渲染作用追踪后调用。(响应式依赖被组件读的时候执行)
-   * 仅在开发(dev)环境可用
    * @param { type, key, target, effect }
    */
   renderTracked(e: DebuggerEvent) {
@@ -65,7 +93,6 @@ export default {
   },
   /**
    * 在一个响应式依赖被组件触发了重新渲染之后调用。(响应式依赖被修改时候执行)
-   * 仅在开发(dev)环境可用
    * @param { type, key, target, effect }
    */
   renderTriggered(e: DebuggerEventTrigger) {
@@ -74,23 +101,3 @@ export default {
   },
 };
 </script>
-<template>
-  <p>count:{{ data.num }}</p>
-  <button @click="onButtonClick">click</button>
-  <!-- <AsyncComponent></AsyncComponent> -->
-</template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
