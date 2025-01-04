@@ -1,0 +1,131 @@
+* {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+}
+
+// 单行省略
+.ellipsis(@width) {
+  max-width: @width;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.multiplyEllipsis( @num) {
+  -webkit-line-clamp: @num; /*控制行数*/
+  text-overflow: ellipsis; /*打点*/
+  display: -webkit-box;
+  overflow: hidden; /*隐藏打点*/
+  -webkit-box-orient: vertical; /*垂直排列*/
+}
+
+// 垂直居中定位
+.v-center() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// 水平居中定位
+.h-center() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 水平、垂直居中定位
+.vh-center() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// flex布局水平n等分
+.v-flex-n() {
+  display: flex;
+  align-items: stretch;
+  > * {
+    width: 0;
+    flex: 1;
+  }
+}
+
+// 扩展点击区域
+.extend-click() {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+// 多倍图
+.bg-image(@url) {
+  background-image: ~"url('@{url}@2x.png')";
+  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+    background-image: ~"url('@{url}@3x.png')";
+  }
+}
+
+//充满全屏
+.full-screen() {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.placeholder(@rules) {
+  &::-webkit-input-placeholder {
+    @rules();
+  }
+  &:-moz-placeholder {
+    @rules();
+  }
+  &::-moz-placeholder {
+    @rules();
+  }
+  &:-ms-input-placeholder {
+    @rules();
+  }
+}
+
+body {
+  word-break: break-all;
+}
+.canclick() {
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+.f-c-c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+// 背景图，铺满
+.bg-img-full(@url) {
+  background-image: url("@{url}");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.can-click() {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn,
+.btns {
+  cursor: pointer;
+}

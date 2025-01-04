@@ -1,0 +1,81 @@
+{
+  "compilerOptions": {
+    /* 指定ECMAScript目标版本 */
+    "target": "ES5",
+    /* 指定模块代码生成方式 */
+    "module": "esnext",
+    /* 启用所有严格类型检查选项 */
+    "strict": true,
+    /* 启用ES模块互操作性 */
+    "esModuleInterop": true,
+    /* 跳过声明文件的类型检查 */
+    "skipLibCheck": true,
+    /* 禁止引用大小写不一致的文件 */
+    "forceConsistentCasingInFileNames": true,
+    /* 指定生成的文件的输出目录 */
+    "outDir": "./dist",
+    /* 生成对应的.map文件 */
+    "sourceMap": true,
+    /* 生成对应的.d.ts文件 */
+    "declaration": true,
+    /* 生成每个对应.d.ts文件的sourcemap */
+    "declarationMap": true,
+    /* 模块解析策略，通常使用'node' */
+    "moduleResolution": "node",
+    /* 用于解析非绝对模块名的基本目录 */
+    "baseUrl": ".",
+    /* 一系列条目，用于将导入重映射到相对于'baseUrl'的查找位置 */
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    /* 包含类型定义的目录列表 */
+    "typeRoots": ["@/types", "node_modules/@types"],
+    /* 要包含在编译中的类型声明文件列表 */
+    "types": ["node"],
+    /* 指定要包含在编译中的库文件 */
+    "lib": ["esnext", "dom"],
+    /* 启用迭代器的完整支持 */
+    "downlevelIteration": true,
+    /* 启用严格的空值检查 */
+    "strictNullChecks": true,
+    /* 确保函数总是在严格模式下执行 */
+    "alwaysStrict": true,
+    /* 报告未使用的局部变量 */
+    "noUnusedLocals": true,
+    /* 报告未使用的参数 */
+    "noUnusedParameters": true,
+    /* 报告当函数并非所有代码路径都有返回值时的错误 */
+    "noImplicitReturns": true,
+    /* 报告switch语句中的穿透案例 */
+    "noFallthroughCasesInSwitch": true,
+    /* 允许从没有默认导出的模块中默认导入 */
+    "allowSyntheticDefaultImports": true,
+    /* jsx 语法 */
+    "jsx": "react",
+    "allowJs": true,
+
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "customMatcher": "\\.(c|le||lle|sa|sc)ss$"
+        }
+      }
+    ]
+  },
+  /* 指定要编译的路径列表，包括文件路径或文件夹路径 */
+  "include": [
+    "build",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "types/*.d.ts"
+  ],
+  /* 指定不需要编译的文件路径或文件夹路径 */
+  "exclude": ["node_modules"]
+  // "exclude": ["node_modules", "dist", "src/**/__tests__/*"]
+  /* 可以指定继承自另一个tsconfig.json文件 */
+  // "extends": "@vue/tsconfig/tsconfig.dom.json" 或其他你选择的预设配置
+}
