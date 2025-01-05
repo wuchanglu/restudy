@@ -2,7 +2,7 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.js')
-
+const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 // 合并公共配置,并添加开发环境配置
 module.exports = merge(baseConfig, {
     mode: 'development', // 开发模式,打包更加快速,省了代码优化步骤
@@ -20,5 +20,5 @@ module.exports = merge(baseConfig, {
             target: 'http://localhost:3000',
             pathRewrite: { '^/old/api': '/new/api' }
         }], //中文文档的写法会报错，根据报错提示的网址配置
-    }
+    },
 })

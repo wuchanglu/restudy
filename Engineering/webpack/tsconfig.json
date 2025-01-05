@@ -72,7 +72,7 @@
     "src/**/*.tsx",
     "src/**/*.d.ts",
     "types/*.d.ts"
-  ],
+, "dist/react.dll.js"  ],
   /* 指定不需要编译的文件路径或文件夹路径 */
   "exclude": ["node_modules"]
   // "exclude": ["node_modules", "dist", "src/**/__tests__/*"]
