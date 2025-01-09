@@ -4,6 +4,8 @@ import * as styles from './index.module.css';
 // import Editor from '@/components/edit'
 import delPic from '@/assets/image/del@2x.png'
 import {aaa} from '@/utils/test'
+import '@/utils/loaderTest.abc'
+
 aaa()
 function App() {
   return <section>

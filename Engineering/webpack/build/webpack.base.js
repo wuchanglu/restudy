@@ -104,6 +104,17 @@ const config = {
           },
         },
       },
+      /** 自定义loader 处理.abc文件 */
+      {
+        test: /\.abc$/,
+        use: [
+          {
+            loader: path.resolve(__dirname, "../loader/my-loader.js"),
+            options: {
+              name: "my-loader",
+            },
+          },]
+      }
     ],
   },
   resolve: {
